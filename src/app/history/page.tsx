@@ -7,7 +7,7 @@ export default function Home() {
       <TableHeader>
         <TableRow>
           <TableHead className="w-full">Task</TableHead>
-          <TableHead className="min-w-32">Date</TableHead>
+          <TableHead className="min-w-48">Date</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

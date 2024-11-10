@@ -1,5 +1,4 @@
 "use client";
-
 import { useData } from "./data-provider";
 import { useEffect } from "react";
 
@@ -8,15 +7,15 @@ const COMPLETED_STORAGE_KEY = "ticked.it/completed";
 
 const DEFAULT_DATA: Task[] = [
   {
-    id: 1,
+    id: "111111",
     task: "Clean Room",
   },
   {
-    id: 2,
+    id: "222222",
     task: "Wash Dishes",
   },
   {
-    id: 3,
+    id: "333333",
     task: "Do Laundry",
   },
 ];

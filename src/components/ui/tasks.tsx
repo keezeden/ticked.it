@@ -7,6 +7,7 @@ import { Button } from "./button";
 import { Plus } from "lucide-react";
 import { Input } from "./input";
 import { generatePlaceholderTaskText } from "@/lib/utils";
+import { nanoid } from "nanoid";
 
 export const Tasks = () => {
   const { tasks, setTasks, setCompleted } = useData();
@@ -14,20 +15,20 @@ export const Tasks = () => {
   const [newTask, setNewTask] = useState<string | null>();
   const [placeholder, setPlaceholder] = useState<string>();
 
-  const [styleMap, setStyleMap] = useState<{ [x: number]: string }>({});
+  const [styleMap, setStyleMap] = useState<{ [x: string]: string }>({});
 
   useEffect(() => {
     const map = tasks.reduce((acc, row) => {
       acc[row.id as keyof typeof styleMap] = "opacity-100";
       return acc;
-    }, {} as Record<number, string>);
+    }, {} as Record<string, string>);
 
     setStyleMap(map);
 
     if (!placeholder || placeholder === "") setPlaceholder(generatePlaceholderTaskText());
   }, [tasks]);
 
-  const completeTask = (id: number) => {
+  const completeTask = (id: string) => {
     const task = tasks.find((row) => row.id === id)!;
 
     setStyleMap((prev) => ({ ...prev, [id]: "opacity-0" }));
@@ -36,7 +37,7 @@ export const Tasks = () => {
   };
 
   const addTask = () => {
-    setTasks((prev) => [...prev, { id: prev.length + 1, task: newTask || "" }]);
+    setTasks((prev) => [...prev, { id: nanoid(6), task: newTask || "" }]);
 
     setNewTask(null);
     setPlaceholder(generatePlaceholderTaskText());
