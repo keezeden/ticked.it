@@ -4,7 +4,7 @@ import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center w-screen h-screen p-4 md:p-16">
+    <div className="flex flex-col items-center justify-center w-screen h-screen p-4 lg:p-16">
       <div className="flex items-center w-full">
         <div className="flex gap-2">
           <h1 className="font-bold lowercase font-mono">Ticked.it</h1>
@@ -14,7 +14,7 @@ export default function Home() {
           <ThemeToggle />
         </div>
       </div>
-      <div className="w-full md:w-1/2 h-full mt-4">
+      <div className="w-full lg:w-1/2 h-full mt-4">
         <Table>
           <TableHeader>
             <TableRow>
