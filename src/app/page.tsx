@@ -12,9 +12,6 @@ export default function Home() {
         <div className="flex-1" />
         <div className="flex gap-2">
           <ThemeToggle />
-          {/* <Button variant="outline" size="icon">
-          <Settings2 />
-        </Button> */}
         </div>
       </div>
       <div className="w-full md:w-1/2 h-full mt-4">
