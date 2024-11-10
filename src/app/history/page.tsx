@@ -1,5 +1,5 @@
+import { Completed } from "@/components/ui/completed";
 import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Tasks } from "@/components/ui/tasks";
 
 export default function Home() {
   return (
@@ -7,11 +7,11 @@ export default function Home() {
       <TableHeader>
         <TableRow>
           <TableHead className="w-full">Task</TableHead>
-          <TableHead>Actions</TableHead>
+          <TableHead className="min-w-32">Date</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        <Tasks />
+        <Completed />
       </TableBody>
     </Table>
   );

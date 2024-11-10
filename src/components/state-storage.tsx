@@ -3,7 +3,9 @@
 import { useData } from "./data-provider";
 import { useEffect } from "react";
 
-const STORAGE_KEY = "ticked.it/tasks";
+const TASKS_STORAGE_KEY = "ticked.it/tasks";
+const COMPLETED_STORAGE_KEY = "ticked.it/completed";
+
 const DEFAULT_DATA: Task[] = [
   {
     id: 1,
@@ -20,20 +22,26 @@ const DEFAULT_DATA: Task[] = [
 ];
 
 export const StateStorage = () => {
-  const { data, setData } = useData();
+  const { tasks, setTasks, completed, setCompleted } = useData();
 
-  const save = (data: any) => localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  const saveTasks = (data: any) => localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(data));
+  const saveCompleted = (data: any) => localStorage.setItem(COMPLETED_STORAGE_KEY, JSON.stringify(data));
 
-  const load = () => JSON.parse(localStorage.getItem(STORAGE_KEY) || JSON.stringify(DEFAULT_DATA));
+  const loadTasks = () => JSON.parse(localStorage.getItem(TASKS_STORAGE_KEY) || JSON.stringify(DEFAULT_DATA));
+  const loadCompleted = () => JSON.parse(localStorage.getItem(COMPLETED_STORAGE_KEY) || "[]");
 
   useEffect(() => {
-    const data = load();
-    setData(data);
+    setTasks(loadTasks());
+    setCompleted(loadCompleted());
   }, []);
 
   useEffect(() => {
-    save(data);
-  }, [data]);
+    saveTasks(tasks);
+  }, [tasks]);
+
+  useEffect(() => {
+    saveCompleted(completed);
+  }, [completed]);
 
   return null;
 };

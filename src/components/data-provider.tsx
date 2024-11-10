@@ -2,16 +2,19 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
 interface DataContextType {
-  data: Task[];
-  setData: React.Dispatch<React.SetStateAction<Task[]>>;
+  tasks: Task[];
+  setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
+  completed: Task[];
+  setCompleted: React.Dispatch<React.SetStateAction<Task[]>>;
 }
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
 
 export const DataProvider = ({ children }: { children: ReactNode }) => {
-  const [data, setData] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [completed, setCompleted] = useState<Task[]>([]);
 
-  return <DataContext.Provider value={{ data, setData }}>{children}</DataContext.Provider>;
+  return <DataContext.Provider value={{ tasks, setTasks, completed, setCompleted }}>{children}</DataContext.Provider>;
 };
 
 export const useData = (): DataContextType => {

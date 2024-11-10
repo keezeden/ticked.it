@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { DataProvider } from "@/components/data-provider";
 import { StateStorage } from "@/components/state-storage";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { RouteToggle } from "@/components/ui/route-toggle";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,7 +34,19 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <DataProvider>
             <StateStorage />
-            {children}
+            <div className="flex flex-col items-center justify-center w-screen h-screen p-4 lg:p-16 lg:pt-8">
+              <div className="flex items-center w-full">
+                <div className="flex gap-2">
+                  <h1 className="font-bold lowercase font-mono">Ticked.it</h1>
+                </div>
+                <div className="flex-1" />
+                <div className="flex gap-2">
+                  <RouteToggle />
+                  <ThemeToggle />
+                </div>
+              </div>
+              <div className="w-full lg:w-1/2 h-full mt-4">{children}</div>
+            </div>
           </DataProvider>
         </ThemeProvider>
       </body>
