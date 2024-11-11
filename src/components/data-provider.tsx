@@ -6,6 +6,10 @@ interface DataContextType {
   setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
   completed: Task[];
   setCompleted: React.Dispatch<React.SetStateAction<Task[]>>;
+  sound: File | null;
+  setSound: React.Dispatch<React.SetStateAction<File | null>>;
+  muted: boolean;
+  setMuted: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
@@ -13,8 +17,14 @@ const DataContext = createContext<DataContextType | undefined>(undefined);
 export const DataProvider = ({ children }: { children: ReactNode }) => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [completed, setCompleted] = useState<Task[]>([]);
+  const [sound, setSound] = useState<File | null>(null);
+  const [muted, setMuted] = useState<boolean>(false);
 
-  return <DataContext.Provider value={{ tasks, setTasks, completed, setCompleted }}>{children}</DataContext.Provider>;
+  return (
+    <DataContext.Provider value={{ tasks, setTasks, completed, setCompleted, sound, setSound, muted, setMuted }}>
+      {children}
+    </DataContext.Provider>
+  );
 };
 
 export const useData = (): DataContextType => {

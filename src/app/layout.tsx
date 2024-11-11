@@ -6,6 +6,7 @@ import { DataProvider } from "@/components/data-provider";
 import { StateStorage } from "@/components/state-storage";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { RouteToggle } from "@/components/ui/route-toggle";
+import { SoundSelect } from "@/components/ui/sound-select";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -41,6 +42,7 @@ export default function RootLayout({
                 </div>
                 <div className="flex-1" />
                 <div className="flex gap-2">
+                  <SoundSelect />
                   <RouteToggle />
                   <ThemeToggle />
                 </div>
